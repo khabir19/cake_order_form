@@ -3,55 +3,120 @@
 
 <head>
   <meta charset="UTF-8">
-  
-  <title>Cake Shop</title>
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- CSS Less -->
   <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <!-- JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="jquery_functions.js"></script>
+
+  <title>Cake Shop</title>
 </head>
 
 <body>
-  <h1>Cake Order Form</h1>
-  <p>Order your freshly baked cakes made using only the finest quality natural ingredients</p>
-  <hr class="solid">
-  <p>Please choose your favorite cake from among the following:<sup>*</sup></p>
-  <form>
-    <input type="radio" id="cake1" name="cake" value="Cake">
-    <img src="./assets/cake1.jpg" alt=""><br>
-    <input type="radio" id="cake2" name="cake" value="Cake">
-    <img src="./assets/cake2.jpg" alt=""><br>
-    <input type="radio" id="cake3" name="cake" value="Cake">
-    <img src="./assets/cake3.jpg" alt=""><br>
-    <input type="radio" id="cake4" name="cake" value="Cake">
-    <img src="./assets/cake4.jpg" alt=""><br>
-  </form>
-  <h3>Order Information</h3>
-  <form>
-    <label for="fname">Name:<sup>*</sup></label><br>
-    <input type="text" id="fname" name="fname">
-    <label for="lname"></label>
-    <input type="text" id="lname" name="lname"><br>
-    <label for="ddate">Delivery date</label><br>
-    <input type="text" id="fname" name="fname">
-    <label for="dtime">Prefered delivery time</label>
-    <input type="text" id="lname" name="lname">
-    <label for="phone">Phone<sup>*</sup></label><br>
-    <input type="text" id="fname" name="fname">
-    <label for="email">Email<sup>*</sup></label>
-    <input type="text" id="lname" name="lname">
-    <sub>to receive the complete receipt</sub>
-  </form>
-  <br>
-  <form>
-    <label for="adress">Adress</label><br>
-    <input type="text" id="fname" name="fname">
-    <input type="text" id="lname" name="lname"><br>
-    <input type="text" id="fname" name="fname">
-    <input type="text" id="lname" name="lname">
-  </form>
-  <button class="primary-btn">Click here</button>
+  <div class="bgColor">
+    <div class="containerPadding">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 id="text">Cake Order Form</h2>
 
-  <!-- Jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+          <p>Order your freshly baked cakes made using only the finest quality natural ingredients</p>
+
+          <hr class="solid">
+
+          <p>Please choose your favorite cake from among the following:<sup>*</sup></p>
+        </div>
+      </div>
+
+      <form id="order" method="post" action="">
+        <div class="row cakes" id="cakes">
+          <div class="col-sm-12 col-md-6">
+            <input type="radio" id="cakeBerries" name="cake" value="Wild Berries Cake">
+            <img src="./assets/cake1.jpg" alt="">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input type="radio" id="cakeNaked" name="cake" value="Strawberry Naked Cake">
+            <img src="./assets/cake2.jpg" alt="">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input type="radio" id="cakeTruffle" name="cake" value="Truffle Cake">
+            <img src="./assets/cake3.jpg" alt="">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input type="radio" id="cakeRainbow" name="cake" value="Rainbow Cake">
+            <img src="./assets/cake4.jpg" alt="">
+          </div>
+          <span id="spnError" class="error">Choose a Cake</span>
+        </div>
+
+        <h3 id="text">Order Information</h3>
+
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <label class="labelPosition" class="labelPosition">First Name<sup>*</sup></label>
+            <input class="formInputStyle" type="text" id="client_firstName" name="firstName" placeholder="First">
+            <span class="error">This field is required</span>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="labelPosition">Last Name<sup>*</sup></label>
+            <input class="formInputStyle" type="text" id="client_lastName" name="lastName" placeholder="Last">
+            <span class="error">This field is required</span>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="labelPosition">Delivery date</label>
+            <input class="formInputStyle" type="text" id="datepicker" name="deliveryDate" autocomplete="off"
+              placeholder="MM/DD/YYYY">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="labelPosition">Prefered delivery time</label>
+            <input class="formInputStyle" type="text" name="deliveryTime" autocomplete="off" placeholder="HH:MM AM">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="labelPosition">Phone<sup>*</sup></label>
+            <input class="formInputStyle" type="number" id="client_phone" name="phone" placeholder="### ### ###">
+            <span class="error">A valid phone number is required (9 digits)</span>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <label class="labelPosition">Email<sup>*</sup></label>
+            <input class="formInputStyle" type="text" id="client_email" name="email">
+            <span class="error">A valid email is required</span>
+            <sub>to receive the complete receipt</sub>
+          </div>
+          <div class="col-sm-12 col-md-12">
+            <label class="labelPosition">Address</label>
+            <input class="formInputStyle" type="text" name="address" placeholder="Street Adress">
+          </div>
+          <div class="col-sm-12 col-md-12">
+            <input class="formInputStyle" type="text" name="addressComplement" placeholder="Street Adress Line 2">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input class="formInputStyle" type="text" name="city" placeholder="City">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input class="formInputStyle" type="text" name="region" placeholder="Region">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input class="formInputStyle" type="number" name="zipCode" placeholder="Postal / Zip code">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <input class="formInputStyle" type="text" name="country" placeholder="Country">
+          </div>
+          <div class="col-sm-12 col-md-12 centralize" id="orderSubmit">
+            <button class="buttonStyle" type="submit">Order</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </body>
 
 </html>

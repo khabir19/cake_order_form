@@ -1,43 +1,106 @@
 //Variables
-@required-info-alert: rgb(255, 0, 0);
+@desktop:   ~"only screen and (min-width: 960px) and (max-width: 1980px)";
+@mobile:    ~"only screen and (min-width: 200px) and (max-width: 959px)";
 
-sup {
-  color: @required-info-alert;
-  font-weight: bold;
+@required-info: #ff0415;
+@valid-info:#43b143;
+@main-blue: #24457b;
+@bg-color: #ebf6fc;
+
+.bgColor {
+  background-color: @bg-color;
+}
+
+.containerPadding {  
+  padding-top: 60px;
+  padding-right: 350px;
+  padding-left: 350px;
+  @media @mobile {
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+.buttonStyle {
+  border: 0;
+  padding: 10px 40px;  
+  background: @main-blue;
+  color: #fff;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.centralize {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+	display: none;
+	margin-left: 10px;
+}		
+
+.error_show {
+	color: @required-info;
+	margin-left: 10px;
+}  
+
+.formInputStyle {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.labelPosition {
+  margin-bottom: -10px;
+}
+
+#text {
+  color: @main-blue;
 }
 
 img {
-  width: 200px;
+  @media @mobile {
+    width: 250px;
+    padding-left: 10px;
+    margin-bottom: 30px;
+  }
+  @media @desktop {
+    width: 250px;
+    padding-left: 10px;
+    margin-top: 20px;
+  }  
 }
-// @required: #f4f4f4;
-// @font-family: Tahoma;
-// @primary-color: #3b5998;
-// @secondary-color: #30B2AA;
 
-// body{
-//   background: @background-color;
-//   font-family: @font-family;
-// }
+h3 {
+  text-decoration-line: underline;
+  padding-top: 20px;
+}
 
-// h1, h3{
-//   .bordered
-// }
+input.invalid, textarea.invalid {
+	border: 2px solid @required-info;
+}
 
-// .primary-text{
-//   color: @secondary-color;
-// }
+input.valid, textarea.valid {
+	border: 2px solid @valid-info;
+}
 
-// .btn{
-//   padding: 10px 15px;
-//   border:0;
-// }
+p, label {
+  color: @main-blue;
+} 
 
-// .primary-btn:extend(.btn){
-//   background: @primary-color;
-//   color: #fff;
-// }
+sup {
+  color: @required-info;
+  font-weight: bold;
+}
 
-// .bordered{
-//   border-top: dotted 1px #000;
-//   border-bottom: solid 2px #000;
-// }
+sub {
+  color: #9c9b97;
+}
+
+::placeholder {
+  color: @main-blue;
+  opacity: 0.5;
+}
+
